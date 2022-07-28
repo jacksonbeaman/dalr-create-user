@@ -1,0 +1,99 @@
+{
+  "service": "mern-finance-backend-for-frontend",
+  "plugins": ["serverless-offline", "serverless-dynamodb-local"],
+  "provider": {
+    "name": "aws",
+    "runtime": "nodejs14.x",
+    "stage": "dev",
+    "region": "us-west-2"
+  },
+  "custom": { "dynamodb": { "stages": ["dev"] } },
+  "resources": {
+    "Resources": {
+      "usersTable": {
+        "Type": "AWS::DynamoDB::Table",
+        "Properties": {
+          "TableName": "usersTable",
+          "AttributeDefinitions": [
+            {
+              "AttributeName": "username",
+              "AttributeType": "S"
+            }
+          ],
+          "KeySchema": [{ "AttributeName": "username", "KeyType": "HASH" }],
+          "ProvisionedThroughput": {
+            "ReadCapacityUnits": 1,
+            "WriteCapacityUnits": 1
+          }
+        }
+      }
+    }
+  },
+  "functions": {
+    "getQuote": {
+      "handler": "src/lambda/getQuote.handler",
+      "events": [
+        {
+          "httpApi": "GET /quote"
+        }
+      ],
+      "environment": { "IEX_TOKEN": "Tpk_4120a800c2054d06ac06e68db942b93b" }
+    },
+    "postBuyStock": {
+      "handler": "src/lambda/postBuyStock.handler",
+      "events": [
+        {
+          "httpApi": "POST /buy"
+        }
+      ]
+    },
+    "postSellStock": {
+      "handler": "src/lambda/postSellStock.handler",
+      "events": [
+        {
+          "httpApi": "POST /sell"
+        }
+      ]
+    },
+    "postCreateUser": {
+      "handler": "src/lambda/postCreateUser.handler",
+      "events": [
+        {
+          "httpApi": "POST /createUser"
+        }
+      ]
+    },
+    "getUser": {
+      "handler": "src/lambda/getUser.handler",
+      "events": [
+        {
+          "httpApi": "GET /getUser"
+        }
+      ]
+    },
+    "postFundAccount": {
+      "handler": "src/lambda/postFundAccount.handler",
+      "events": [
+        {
+          "httpApi": "POST /postFundAccount"
+        }
+      ]
+    },
+    "postWithdrawAccount": {
+      "handler": "src/lambda/postWithdrawAccount.handler",
+      "events": [
+        {
+          "httpApi": "POST /postWithdrawAccount"
+        }
+      ]
+    },
+    "getTransactionHistory": {
+      "handler": "src/lambda/getTransactionHistory.handler",
+      "events": [
+        {
+          "httpApi": "GET /getTransactionHistory"
+        }
+      ]
+    }
+  }
+}
