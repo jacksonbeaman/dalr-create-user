@@ -19,10 +19,6 @@
     "url": "https://github.com/jacksonbeaman/mern-finance-backend-for-frontend/issues"
   },
   "homepage": "https://github.com/jacksonbeaman/mern-finance-backend-for-frontend#readme",
-  "devDependencies": {
-    "serverless": "^3.3.0",
-    "serverless-offline": "^8.5.0"
-  },
   "dependencies": {
     "@aws-sdk/client-dynamodb": "^3.87.0",
     "@aws-sdk/lib-dynamodb": "^3.87.0",
@@ -38,6 +34,8 @@
     "nyc": "^15.1.0",
     "serverless-create-global-dynamodb-table": "^3.1.1",
     "serverless-dynamodb-local": "^0.2.40",
+    "serverless": "^3.3.0",
+    "serverless-offline": "^8.5.0",
     "sinon": "^14.0.0"
   }
 }
