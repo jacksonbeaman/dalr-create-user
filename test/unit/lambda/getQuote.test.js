@@ -11,7 +11,7 @@ const { handler: getQuoteLambda } = require('../../../src/lambda/getQuote');
 const getQuote = require('../../../src/lambda/utils/getQuote');
 
 describe('getQuoteTest1', () => {
-  // const OLD_ENV = Object.assign({}, process.env);
+  // const OLD_ENV = Object.assign({}, process.env);q
   const OLD_ENV = { ...process.env };
   let sandbox;
   let iexStub;
@@ -76,10 +76,12 @@ describe('getQuoteTest1', () => {
       eventGenerator('GET', '/quote', { symbol: 'xom' })
     );
     console.log('catching error...');
-    console.log(JSON.parse(res.body));
+    const {
+      body: { companyName },
+    } = JSON.parse(res.body);
 
     chai.expect(res.statusCode).to.equal(200);
-    chai.expect(JSON.parse(res.body.companyName)).to.equal('Exxon Mobil Corp.');
+    chai.expect(companyName).to.equal('Exxon Mobil Corp.');
   });
 
   // add it / test cases
