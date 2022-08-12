@@ -12,3 +12,12 @@ cloudformation_execution_role = "arn:aws:iam::636793644820:role/aws-sam-cli-mana
 artifacts_bucket = "aws-sam-cli-managed-build-dalr-cr-artifactsbucket-1wl4z9bk4nz1g"
 image_repository = ""
 region = "us-west-2"
+
+[deploy-dalr-create-user]
+[deploy-dalr-create-user.pipeline_bootstrap]
+[deploy-dalr-create-user.pipeline_bootstrap.parameters]
+pipeline_execution_role = "arn:aws:iam::636793644820:role/aws-sam-cli-managed-deploy-d-PipelineExecutionRole-18E8BQVJ59J4H"
+cloudformation_execution_role = "arn:aws:iam::636793644820:role/aws-sam-cli-managed-deplo-CloudFormationExecutionR-1SEU4G3KLELQ8"
+artifacts_bucket = "aws-sam-cli-managed-deploy-dalr-c-artifactsbucket-1sxs4hf364ll0"
+image_repository = ""
+region = "us-west-2"
